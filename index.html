@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr"> 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Test</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Quiz Test</h1>
+
+    <!-- Box quiz -->
+    <div id="quiz-box">
+      <div id="question">Loading questions...</div>
+      <div id="choices"></div>
+      <div id="feedback"></div>
+      <button id="nextBtn" class="hidden">Next</button>
+    </div>
+
+    <!-- Screen score -->
+    <div id="scoreScreen" class="hidden">
+      <h2>Your score :</h2>
+      <p id="scoreText"></p>
+      <button onclick="window.location.reload()">Replay</button>
+    </div>
+  </div>
+
+  <!-- Script file -->
+  <script src="script.js"></script>
+</body>
+</html>

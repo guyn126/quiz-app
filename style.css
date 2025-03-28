@@ -1,0 +1,93 @@
+body {
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #fff3e0);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.quiz-container {
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 650px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+#question {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.choice {
+  background-color: #f1f1f1;
+  padding: 1rem;
+  margin: 0.6rem 0;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.choice:hover {
+  background-color: #e0e0e0;
+  transform: translateY(-2px);
+}
+
+.choice:active {
+  transform: scale(0.97);
+}
+
+.correct {
+  background-color: #c8f7dc !important;
+  color: #1b5e20;
+  font-weight: bold;
+}
+
+.incorrect {
+  background-color: #ffcdd2 !important;
+  color: #b71c1c;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
+#feedback {
+  margin-top: 1.2rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #555;
+  min-height: 24px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+button {
+  margin-top: 1.8rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #43a047;
+}
+
+button:active {
+  transform: scale(0.97);
+}
