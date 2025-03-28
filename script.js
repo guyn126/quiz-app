@@ -2,9 +2,9 @@ let currentQuestion = 0;
 let score = 0;
 let questions = [];
 
-// Load questions from local API
+// Load questions on Render
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("http://localhost:3000/questions")
+  fetch("https://js-server-api.onrender.com/questions")
     .then((res) => res.json())
     .then((data) => {
       questions = data;
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch((err) => {
       document.getElementById("question").innerText =
         "Loading questions...";
-      console.error(err);
+      console.error("Error to load the questions :", err);
     });
 });
 
@@ -21,23 +21,17 @@ function showQuestion() {
   const questionBox = document.getElementById("question");
   const choicesBox = document.getElementById("choices");
   const feedback = document.getElementById("feedback");
-  const nextBtn = document.getElementById("nextBtn");  
+  const nextBtn = document.getElementById("nextBtn");
 
-// control log esp
-
-  // Get the current question
   let q = questions[currentQuestion];
   let choices = [...q.incorrect_answers, q.correct_answer];
-
   choices.sort(() => Math.random() - 0.5);
 
-  // Display question
   questionBox.innerText = q.question;
   choicesBox.innerHTML = "";
   feedback.innerHTML = "";
   nextBtn.classList.add("hidden");
 
-  // Display choice
   choices.forEach((choice) => {
     const btn = document.createElement("div");
     btn.classList.add("choice");
@@ -46,14 +40,13 @@ function showQuestion() {
     btn.onclick = () => {
       if (choice === q.correct_answer) {
         btn.classList.add("correct");
-        feedback.innerText = "Correct!";
+        feedback.innerText = "Correct !";
         score++;
       } else {
         btn.classList.add("incorrect");
-        feedback.innerText = " Wrong answer";
+        feedback.innerText = "Wrong answer";
       }
 
-      // Disable all buttons and highlight the correct one
       Array.from(document.getElementsByClassName("choice")).forEach((el) => {
         el.onclick = null;
         if (el.innerText === q.correct_answer) {
@@ -78,18 +71,16 @@ function showQuestion() {
   };
 }
 
-// Show final score
+// Show the score
 function showScore() {
   document.getElementById("quiz-box").classList.add("hidden");
   document.getElementById("scoreScreen").classList.remove("hidden");
-  document.getElementById(
-    "scoreText"
-  ).innerText = `${score} on ${questions.length}`;
+  document.getElementById("scoreText").innerText = `${score} / ${questions.length}`;
 }
 
-// Send score to json-server
+// Save the score in the API Render
 function saveScore(score) {
-  fetch("http://localhost:3000/scores", {
+  fetch("https://js-server-api.onrender.com/scores", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -101,9 +92,9 @@ function saveScore(score) {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log("Score saved:", data);
+      console.log("Score saved :", data);
     })
     .catch((err) => {
-      console.error("Failed to save score:", err);
+      console.error("Save error :", err);
     });
 }
